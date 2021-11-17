@@ -1,6 +1,17 @@
 const quote = document.getElementsByClassName("quote")[0];
+const nextButton = document.getElementsByClassName("next-button")[0];
+const charactersButtons = document.getElementsByClassName("answer")
+
 
 let listOfQuotes=[];
+let quoteNumber = 0;
+
+async function getListAndFirstQuote(){
+    await getListOfQuotes()  
+    quote.textContent = `"${listOfQuotes[quoteNumber].quote}"`
+}
+
+getListAndFirstQuote();
 
 function getListOfQuotes(){
     return new Promise((resolve,reject)=>{
@@ -25,10 +36,30 @@ function getListOfQuotes(){
 }
   
 
-async function changeQuote(){
-    await getListOfQuotes()  
-    console.log(listOfQuotes)
-    quote.textContent = `"${listOfQuotes[2].quote}"`
+function changeQuote(){
+    quoteNumber===17 ? quoteNumber=0 : quoteNumber+=1;
+    quote.textContent = `"${listOfQuotes[quoteNumber].quote}"`
 }
 
-changeQuote();
+  
+function checkAnswer(answer){
+    let {character} = listOfQuotes[quoteNumber];
+    character==answer ? alert("That is a good answer!") : alert("Nope! Try again!");
+}
+
+
+
+//LISTENERS
+
+//NEXT QUOTE
+nextButton.addEventListener("click", () => changeQuote());
+
+
+for(let i=0;i<charactersButtons.length;i++){
+    charactersButtons[i].addEventListener("click", () => {
+        //console.log(charactersButtons[i].textContent)
+        checkAnswer(charactersButtons[i].textContent);
+    });
+}
+
+
