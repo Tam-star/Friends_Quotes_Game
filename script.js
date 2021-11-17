@@ -1,14 +1,17 @@
 const quote = document.getElementsByClassName("quote")[0];
-const nextButton = document.getElementsByClassName("next-button")[0];
-const charactersButtons = document.getElementsByClassName("answer")
+const resetButton = document.getElementsByClassName("reset-button")[0];
+const charactersButtons = document.getElementsByClassName("answer");
+const score = document.getElementById("score");
 
 
 let listOfQuotes=[];
 let quoteNumber = 0;
+let userScore = 0;
 
 async function getListAndFirstQuote(){
     await getListOfQuotes()  
     quote.textContent = `"${listOfQuotes[quoteNumber].quote}"`
+    score.textContent=userScore;
 }
 
 getListAndFirstQuote();
@@ -44,15 +47,31 @@ function changeQuote(){
   
 function checkAnswer(answer){
     let {character} = listOfQuotes[quoteNumber];
-    character==answer ? alert("That is a good answer!") : alert("Nope! Try again!");
+    character==answer ? goodAnswer() : wrongAnswer(answer);
 }
 
+function goodAnswer(){
+    alert("That is a good answer!");
+    userScore+=1;
+    score.textContent=userScore;
+    changeQuote();
+}
 
+function wrongAnswer(answer){
+    alert(`Sorry! It was not ${answer}. Better luck next time!`);
+    changeQuote();
+}
+function reset(){
+    quoteNumber = 0;
+    quote.textContent = `"${listOfQuotes[quoteNumber].quote}"`
+    userScore=0;
+    score.textContent=0;
+}
 
 //LISTENERS
 
 //NEXT QUOTE
-nextButton.addEventListener("click", () => changeQuote());
+resetButton.addEventListener("click", () => reset());
 
 
 for(let i=0;i<charactersButtons.length;i++){
