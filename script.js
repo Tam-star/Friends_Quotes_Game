@@ -2,6 +2,10 @@ const quote = document.getElementsByClassName("quote")[0];
 const resetButton = document.getElementsByClassName("reset-button")[0];
 const charactersButtons = document.getElementsByClassName("answer");
 const score = document.getElementById("score");
+const endingOpacity = document.getElementsByClassName("ending-opacity")[0];
+const endingBlock = document.getElementsByClassName("ending-block")[0];
+const endingSentence = document.getElementById("ending-sentence");
+const finalScore = document.getElementById("final-score");
 
 
 let listOfQuotes=[];
@@ -40,7 +44,7 @@ function getListOfQuotes(){
   
 
 function changeQuote(){
-    quoteNumber===17 ? quoteNumber=0 : quoteNumber+=1;
+    quoteNumber===17 ? endingTest() : quoteNumber+=1;
     quote.textContent = `"${listOfQuotes[quoteNumber].quote}"`
 }
 
@@ -55,17 +59,34 @@ function goodAnswer(){
     userScore+=1;
     score.textContent=userScore;
     changeQuote();
+    
 }
 
 function wrongAnswer(answer){
     alert(`Sorry! It was not ${answer}. Better luck next time!`);
     changeQuote();
 }
+
 function reset(){
     quoteNumber = 0;
     quote.textContent = `"${listOfQuotes[quoteNumber].quote}"`
     userScore=0;
     score.textContent=0;
+}
+
+function endingTest(){
+    endingOpacity.style.visibility="visible";
+    endingBlock.style.visibility="visible";
+    finalScore.textContent = `${userScore}/18`;
+    if(userScore<=6){
+        endingSentence.textContent="It looks like you don't really know this great show! Come on, join the fan club and meet those fun New Yorkers!"
+    } else if(userScore<=12){
+        endingSentence.textContent="You might have watched this show a couple of times...but is it enough?"
+    } else if(userScore<=17){
+        endingSentence.textContent="Congratulations! You seem to know pretty well this series! How about another round of the ten seasons ?"
+    } else if(userScore==18){
+        endingSentence.textContent="Congratulations!! You've mastered this test! I know you have watched this show at least a hundred times. Don't worry...me too!"
+    }
 }
 
 //LISTENERS
@@ -76,7 +97,6 @@ resetButton.addEventListener("click", () => reset());
 
 for(let i=0;i<charactersButtons.length;i++){
     charactersButtons[i].addEventListener("click", () => {
-        //console.log(charactersButtons[i].textContent)
         checkAnswer(charactersButtons[i].textContent);
     });
 }

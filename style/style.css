@@ -12,7 +12,7 @@ body {
 }
 
 header {
-  padding: 100px 0;
+  padding: 80px 0;
   background-color: black;
 }
 @media (max-width: 940px) {
@@ -54,9 +54,9 @@ h1 {
 
 .question {
   background-color: #DDB077;
-  text-align: center;
-  font-family: "FriendsFont";
   font-size: 40px;
+  font-family: "FriendsFont";
+  text-align: center;
   border: 1px solid black;
   line-height: 120px;
 }
@@ -94,6 +94,7 @@ h1 {
 .answer-block p {
   font-size: 25px;
   font-family: "FriendsFont";
+  text-align: center;
   width: 70%;
   padding: 10px 0;
   margin: auto;
@@ -145,6 +146,7 @@ h1 {
   font-size: 30px;
   padding: 10px;
   border-radius: 20px;
+  margin-bottom: 30px;
 }
 @media (max-width: 648px) {
   .score-block {
@@ -158,12 +160,58 @@ h1 {
   font-size: 30px;
   padding: 10px;
   border-radius: 20px;
+  margin-bottom: 30px;
   cursor: pointer;
 }
 @media (max-width: 648px) {
   .reset-button {
     margin-bottom: 50px;
   }
+}
+
+.ending-opacity {
+  visibility: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  opacity: 40%;
+  z-index: 2;
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+}
+
+.ending-block {
+  visibility: hidden;
+  position: fixed;
+  opacity: 100%;
+  z-index: 3;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: blanchedalmond;
+  padding: 100px;
+  margin: auto;
+  text-align: center;
+  border: 10px outset #DDB077;
+}
+.ending-block h2 {
+  padding-bottom: 30px;
+  font-size: 40px;
+  font-family: "FriendsFont";
+  text-align: center;
+}
+.ending-block p {
+  font-size: 25px;
+  padding-bottom: 20px;
+  font-family: Helvetica, sans-serif;
+}
+.ending-block button {
+  padding: 20px;
+  font-size: 25px;
+  font-family: "FriendsFont";
+  text-align: center;
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=style.css.map */

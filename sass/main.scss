@@ -1,33 +1,7 @@
-@font-face {
-    font-family: "FriendsFont";
-    src: url("../style/fonts/GabrielWeissFriendsFont.ttf");
-}
+@import "./utils/variables";
+@import "./utils/fonts";
+@import "./utils/mixins";
 
-$breakpoint-tablette:940px;
-$breakpoint-mobile:648px;
-
-@mixin bottom-style{
-    font-family: 'FriendsFont';
-    background-color: white;   
-    font-size: 30px;
-    padding:10px;
-    border-radius: 20px;
-    @include mobile-only(){
-        margin-bottom:50px;
-    }
-}
-
-@mixin tablette-only{
-    @media (max-width: $breakpoint-tablette) {
-        @content;
-    }
-}
-
-@mixin mobile-only{
-    @media (max-width: $breakpoint-mobile) {
-        @content;
-    }
-}
 
 *{
     padding : 0;
@@ -39,7 +13,7 @@ body{
 }
 
 header{
-    padding:100px 0;
+    padding:80px 0;
     background-color: black; 
     @include tablette-only(){
         padding:60px 0;
@@ -47,9 +21,7 @@ header{
 }
 
 h1{
-    font-size : 60px;
-    font-family: 'FriendsFont';
-    text-align: center;
+    @include text-style(60px);
     color:white;
 }
 
@@ -78,10 +50,8 @@ h1{
 }
 
 .question{
-    background-color: #DDB077;
-    text-align: center;
-    font-family: 'FriendsFont';
-    font-size:40px;
+    background-color: $primary-colour;
+    @include text-style(40px);
     border: 1px solid black;
     line-height: 120px;
 }
@@ -91,7 +61,7 @@ h1{
     font-family: Helvetica, sans-serif;
     font-size : 30px;
     padding:40px 20px;
-    background-color: blanchedalmond;
+    background-color: $secondary-colour;
     border: 1px solid black;
 }
 
@@ -112,8 +82,7 @@ h1{
     height:80px;
     display: flex;
     & p{
-        font-size : 25px;
-        font-family: 'FriendsFont';
+        @include text-style(25px);
         width:70%;
         padding:10px 0;
         margin:auto;
@@ -166,5 +135,44 @@ h1{
     cursor: pointer;
 }
 
+.ending-opacity{
+    visibility:hidden;
+    position: fixed;
+    top:0;
+    left:0;
+    opacity: 40%;
+    z-index: 2;
+    width:100vw;
+    height:100vh;
+    background-color: white;
+}
 
+.ending-block{
+    visibility:hidden;
+    position:fixed;
+    opacity:100%;
+    z-index: 3;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: $secondary-colour;
+    padding:100px;
+    margin:auto;
+    text-align: center;
+    border : 10px outset $primary-colour;
+    & h2{
+        padding-bottom: 30px;
+        @include text-style(40px);
+    }
+    & p{
+        font-size: 25px;
+        padding-bottom: 20px;
+        font-family: Helvetica, sans-serif;
+    }
+    & button{
+        padding:20px;
+        @include text-style(25px);
+        cursor:pointer;
+    }
+}
 

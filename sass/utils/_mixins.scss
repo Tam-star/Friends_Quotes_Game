@@ -1,0 +1,30 @@
+@mixin bottom-style{
+    font-family: 'FriendsFont';
+    background-color: white;   
+    font-size: 30px;
+    padding:10px;
+    border-radius: 20px;
+    margin-bottom:30px;
+    @include mobile-only(){
+        margin-bottom:50px;
+    }
+}
+
+@mixin text-style($text-size){
+    font-size : $text-size;
+    font-family: 'FriendsFont';
+    text-align: center;
+}
+
+
+@mixin tablette-only{
+    @media (max-width: $breakpoint-tablette) {
+        @content;
+    }
+}
+
+@mixin mobile-only{
+    @media (max-width: $breakpoint-mobile) {
+        @content;
+    }
+}
