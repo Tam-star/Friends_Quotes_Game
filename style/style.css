@@ -184,7 +184,6 @@ h1 {
 .ending-block {
   visibility: hidden;
   position: fixed;
-  opacity: 100%;
   z-index: 3;
   top: 50%;
   left: 50%;
@@ -212,6 +211,20 @@ h1 {
   font-family: "FriendsFont";
   text-align: center;
   cursor: pointer;
+}
+
+.after-answering {
+  visibility: hidden;
+  position: absolute;
+  z-index: 3;
+  top: 800px;
+  left: 50%;
+  width: 100vw;
+  height: 100vh;
+  transform: translate(-50%, -50%);
+  font-size: 80px;
+  font-family: "FriendsFont";
+  text-align: center;
 }
 
 /*# sourceMappingURL=style.css.map */

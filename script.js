@@ -6,6 +6,7 @@ const endingOpacity = document.getElementsByClassName("ending-opacity")[0];
 const endingBlock = document.getElementsByClassName("ending-block")[0];
 const endingSentence = document.getElementById("ending-sentence");
 const finalScore = document.getElementById("final-score");
+const afterAnswering = document.getElementsByClassName("after-answering")[0];
 
 
 let listOfQuotes=[];
@@ -55,15 +56,41 @@ function checkAnswer(answer){
 }
 
 function goodAnswer(){
-    alert("That is a good answer!");
-    userScore+=1;
-    score.textContent=userScore;
-    changeQuote();
+    if ( window.innerWidth < 648) {     
+      alert("Good answer")  
+      userScore+=1;
+      score.textContent=userScore;
+      changeQuote();
+    }
+    else {
+        afterAnswering.style.visibility="visible";
+        afterAnswering.style.color="green";
+        afterAnswering.textContent="Good answer"
+        userScore+=1;
+        score.textContent=userScore;
+        setTimeout(() => {
+            afterAnswering.style.visibility="hidden";
+            changeQuote();
+        }, 2000
+        )
+    }
+   
 }
 
 function wrongAnswer(answer){
-    alert(`Sorry! It was not ${answer}. Better luck next time!`);
-    changeQuote();
+    if ( window.innerWidth < 648) {     
+        alert("Wrong answer")  
+        changeQuote();
+    }
+    else {
+        afterAnswering.style.visibility="visible";
+        afterAnswering.style.color="red";
+        afterAnswering.textContent="Sorry, wrong answer"
+        setTimeout(() => {
+        afterAnswering.style.visibility="hidden";
+        changeQuote();
+    }, 2000)
+    }
 }
 
 function reset(){
