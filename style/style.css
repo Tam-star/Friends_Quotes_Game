@@ -190,9 +190,19 @@ h1 {
   transform: translate(-50%, -50%);
   background-color: blanchedalmond;
   padding: 100px;
-  margin: auto;
   text-align: center;
   border: 10px outset #DDB077;
+}
+@media (max-width: 940px) {
+  .ending-block {
+    padding: 50px;
+  }
+}
+@media (max-width: 648px) {
+  .ending-block {
+    padding: 20px;
+    width: 100%;
+  }
 }
 .ending-block h2 {
   padding-bottom: 30px;
@@ -217,14 +227,17 @@ h1 {
   visibility: hidden;
   position: absolute;
   z-index: 3;
-  top: 800px;
-  left: 50%;
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
-  transform: translate(-50%, -50%);
+  display: flex;
   font-size: 80px;
   font-family: "FriendsFont";
   text-align: center;
+}
+.after-answering p {
+  margin: 420px auto 0 auto;
 }
 
 /*# sourceMappingURL=style.css.map */

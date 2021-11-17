@@ -7,6 +7,7 @@ const endingBlock = document.getElementsByClassName("ending-block")[0];
 const endingSentence = document.getElementById("ending-sentence");
 const finalScore = document.getElementById("final-score");
 const afterAnswering = document.getElementsByClassName("after-answering")[0];
+const afterAnsweringSentence = document.getElementById("after-answering-sentence");
 
 
 let listOfQuotes=[];
@@ -65,7 +66,7 @@ function goodAnswer(){
     else {
         afterAnswering.style.visibility="visible";
         afterAnswering.style.color="green";
-        afterAnswering.textContent="Good answer"
+        afterAnsweringSentence.textContent="Good answer"
         userScore+=1;
         score.textContent=userScore;
         setTimeout(() => {
@@ -85,7 +86,7 @@ function wrongAnswer(answer){
     else {
         afterAnswering.style.visibility="visible";
         afterAnswering.style.color="red";
-        afterAnswering.textContent="Sorry, wrong answer"
+        afterAnsweringSentence.textContent="Sorry, wrong answer"
         setTimeout(() => {
         afterAnswering.style.visibility="hidden";
         changeQuote();

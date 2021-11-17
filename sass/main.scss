@@ -156,9 +156,15 @@ h1{
     transform: translate(-50%, -50%);
     background-color: $secondary-colour;
     padding:100px;
-    margin:auto;
     text-align: center;
     border : 10px outset $primary-colour;
+    @include tablette-only(){
+        padding:50px;
+    }
+    @include mobile-only(){
+        padding:20px;
+        width:100%;
+    }
     & h2{
         padding-bottom: 30px;
         @include text-style(40px);
@@ -179,10 +185,13 @@ h1{
     visibility: hidden;
     position:absolute;
     z-index: 3;
-    top:800px;
-    left: 50%;
+    top:0;
+    left:0;
     width:100vw;
     height:100vh;
-    transform: translate(-50%, -50%);
+    display:flex;
     @include text-style(80px);
+    & p{
+        margin:420px auto 0 auto;
+    }
 }
