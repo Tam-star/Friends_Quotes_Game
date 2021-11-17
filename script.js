@@ -12,13 +12,13 @@ let listOfQuotes=[];
 let quoteNumber = 0;
 let userScore = 0;
 
+/* FUNCTIONS */
+
 async function getListAndFirstQuote(){
     await getListOfQuotes()  
     quote.textContent = `"${listOfQuotes[quoteNumber].quote}"`
     score.textContent=userScore;
 }
-
-getListAndFirstQuote();
 
 function getListOfQuotes(){
     return new Promise((resolve,reject)=>{
@@ -30,16 +30,16 @@ function getListOfQuotes(){
             'Content-type' : 'application/json'}
         }
       fetch(url, options)
-       .then(reponse => reponse.json())
+        .then(reponse => reponse.json())
         .then(data=>{
             listOfQuotes=[...data]
             resolve();   
-      })   
-      .catch(err =>{
-          console.log("Il y a erreur", err);
-        })
-      .catch(err =>console.log("Il y a erreur json", err))
-    });
+        })   
+        .catch(err =>{
+            console.log("Il y a erreur", err);
+            })
+        .catch(err =>console.log("Il y a erreur json", err))
+        });
 }
   
 
@@ -59,7 +59,6 @@ function goodAnswer(){
     userScore+=1;
     score.textContent=userScore;
     changeQuote();
-    
 }
 
 function wrongAnswer(answer){
@@ -89,9 +88,8 @@ function endingTest(){
     }
 }
 
-//LISTENERS
+/* LISTENERS */
 
-//NEXT QUOTE
 resetButton.addEventListener("click", () => reset());
 
 
@@ -102,3 +100,5 @@ for(let i=0;i<charactersButtons.length;i++){
 }
 
 
+
+getListAndFirstQuote();
